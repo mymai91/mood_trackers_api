@@ -10,6 +10,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
+require "resolv"
 class Mood < ApplicationRecord
   enum :emotion, { not_good_at_all: "not_good_at_all", a_bit_meh: "a_bit_meh", pretty_good: "pretty_good", felling_greate: "felling_greate" }
 

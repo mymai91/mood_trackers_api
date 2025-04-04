@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_04_214115) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_04_221046) do
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.column "emotion", "enum('not_good_at_all','a_bit_meh','pretty_good','felling_greate')", default: "pretty_good", null: false
     t.integer "rating"
@@ -18,5 +18,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_04_214115) do
     t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_ips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address"], name: "index_user_ips_on_ip_address", unique: true
   end
 end
