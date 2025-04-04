@@ -14,5 +14,13 @@
 FactoryBot.define do
   factory :user_ip do
     ip_address { "172.0.0.1" }
+
+    trait :valid_ip_address1 do
+      ip_address { "172.16.0.1" }
+    end
+
+    trait :valid_ip_address1 do
+      ip_address { "127.0.0.1" }
+    end
   end
 end

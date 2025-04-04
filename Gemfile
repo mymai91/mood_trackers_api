@@ -58,6 +58,8 @@ group :development, :test do
 
   # Add annotation to model
   gem "annotaterb"
+
+  gem "byebug"
 end
 
 group :development do

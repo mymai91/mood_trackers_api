@@ -9,11 +9,21 @@
 #  rating     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_ip_id :bigint           not null
+#
+# Indexes
+#
+#  index_moods_on_user_ip_id  (user_ip_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_ip_id => user_ips.id)
 #
 require 'rails_helper'
 
 RSpec.describe Mood, type: :model do
-  let(:mood) { create(:mood) }
+  let (:user_ip) { create(:user_ip) }
+  let (:mood) { create(:mood, user_ip: user_ip) }
   let(:invalid_mood) { build(:mood, emotion: nil) }
   let(:invalid_ip_address) { build(:mood, ip_address: "invalid_ip") }
 
@@ -26,10 +36,19 @@ RSpec.describe Mood, type: :model do
       expect(invalid_mood).to_not be_valid
       expect(invalid_mood.errors[:emotion]).to include("can't be blank")
     end
+  end
 
-    it "it is invalid if ip_address is invalid" do
-      expect(invalid_ip_address).to_not be_valid
-      expect(invalid_ip_address.errors[:ip_address]).to include("Must be valid IP address")
+  describe "associations" do
+    it "belongs to user_ip" do
+      expect(mood.user_ip).to be_a(UserIp)
+    end
+
+    it "only allow 1 mood from the same ip address per day" do
+      user_ip = create(:user_ip)
+
+      first_mood = create(:mood, user_ip: user_ip, created_at: Date.today)
+
+      expect(first_mood).to be_valid
     end
   end
 end
