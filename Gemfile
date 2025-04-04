@@ -55,6 +55,9 @@ group :development, :test do
   # Unit test
   gem "rspec-rails", "~> 7.0.0"
   gem "factory_bot_rails"
+
+  # Add annotation to model
+  gem "annotaterb"
 end
 
 group :development do
