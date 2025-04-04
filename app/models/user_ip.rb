@@ -15,5 +15,7 @@
 require "resolv"
 
 class UserIp < ApplicationRecord
+  has_many :moods, dependent: :destroy
+
   validates :ip_address, format: { with: Resolv::IPv4::Regex, message: "Must be valid IP address" }, presence: true, uniqueness: true
 end
