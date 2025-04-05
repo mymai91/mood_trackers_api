@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
+  devise_for :admin_users, controllers: {
+    sessions: "admin_users/sessions"
+  }
+
   namespace :admin do
     resources :moods, only: [ :index, :show ]
     resources :user_ips, only: [ :index, :show ]
