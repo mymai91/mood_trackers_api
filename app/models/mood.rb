@@ -24,7 +24,7 @@ require "resolv"
 class Mood < ApplicationRecord
   belongs_to :user_ip
 
-  enum :emotion, { not_good_at_all: "not_good_at_all", a_bit_meh: "a_bit_meh", pretty_good: "pretty_good", felling_greate: "felling_greate" }
+  enum :emotion, { not_good_at_all: "not_good_at_all", a_bit_meh: "a_bit_meh", pretty_good: "pretty_good", felling_great: "felling_great" }
 
   # validate :only_one_mood_a_day
 

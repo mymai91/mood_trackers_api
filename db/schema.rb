@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_04_04_225147) do
   create_table "moods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.column "emotion", "enum('not_good_at_all','a_bit_meh','pretty_good','felling_greate')", default: "pretty_good", null: false
+    t.column "emotion", "enum('not_good_at_all','a_bit_meh','pretty_good','felling_great')", default: "pretty_good", null: false
     t.integer "rating"
     t.text "comment"
     t.string "ip_address"

@@ -46,7 +46,7 @@ FactoryBot.define do
 
     trait :created_last_month do
       created_at { Time.current.beginning_of_month - 1.month }
-      emotion { "felling_greate" }
+      emotion { "felling_great" }
       rating { 5 }
       comment { "Great" }
     end
