@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :moods, only: [ :index, :show ]
+    resources :user_ips, only: [ :index, :show ]
+
+    root to: "moods#index"
+  end
   namespace :api do
     namespace :v1 do
       get "moods/create"
