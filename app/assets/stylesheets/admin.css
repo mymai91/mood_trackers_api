@@ -1,0 +1,41 @@
+
+.admin {
+  color: #1A202C;
+  font-size: 1rem;
+}
+
+.text-center {
+  text-align: center;
+} 
+
+.admin .container {
+  width: 100%;
+}
+
+.admin .new_admin_user {
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.admin .w-full {
+  width: 100%;
+}
+
+.mb-4 {
+  margin-bottom: 0.5rem
+}
+
+.admin input {
+  height: 1.5rem;
+}
+
+.admin .primary-button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  height: 2rem;
+}
