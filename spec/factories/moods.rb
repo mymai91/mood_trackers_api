@@ -26,5 +26,29 @@ FactoryBot.define do
     comment { "Good" }
     ip_address { "127.0.0.1" }
     association :user_ip
+    created_at { Time.current }
+
+    # Use time anchor is first day of month
+
+    trait :created_yesterday do
+      created_at { Time.current.beginning_of_month - 1.day }
+      emotion { "not_good_at_all" }
+      rating { 1 }
+      comment { "Bad" }
+    end
+
+    trait :created_two_weeks_ago do
+      created_at { Time.current.beginning_of_month - 2.weeks }
+      emotion { "a_bit_meh" }
+      rating { 3 }
+      comment { "hum bit mehh" }
+    end
+
+    trait :created_last_month do
+      created_at { Time.current.beginning_of_month - 1.month }
+      emotion { "felling_greate" }
+      rating { 5 }
+      comment { "Great" }
+    end
   end
 end
