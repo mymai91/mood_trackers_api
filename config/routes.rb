@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, controllers: {
     sessions: "admin_users/sessions"
-  }
+  }, skip: [ :registrations, :passwords ]
 
   namespace :admin do
     resources :moods, only: [ :index, :show ]
