@@ -60,6 +60,9 @@ group :development, :test do
   gem "annotaterb"
 
   gem "byebug"
+
+  # JSON serializer for API
+  gem "jsonapi-serializer"
 end
 
 group :development do
