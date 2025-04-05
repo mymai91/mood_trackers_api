@@ -67,6 +67,9 @@ group :development, :test do
 
   # JSON serializer for API
   gem "jsonapi-serializer"
+
+  # Allow frontend requests
+  gem "rack-cors"
 end
 
 group :development do
