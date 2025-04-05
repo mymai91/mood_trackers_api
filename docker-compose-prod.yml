@@ -1,0 +1,32 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name: mood_trackers_api
+    ports:
+      - "3000:80"
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      DATABASE_URL: mysql2://root:${DB_PASSWORD}@db:3306/${DB_NAME}
+      RAILS_ENV: production
+      RAILS_LOG_TO_STDOUT: "true"
+    depends_on:
+      - db
+    command: ["./bin/thrust", "./bin/rails", "server"]
+
+  db:
+    image: mysql:9.0
+    container_name: mood_trackers_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "3306:3306"
+    volumes:
+      - my_sql_data:/var/lib/mysql
+
+volumes:
+  my_sql_data:

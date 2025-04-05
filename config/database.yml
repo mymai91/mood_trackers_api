@@ -50,20 +50,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: mood_trackers_production
-    username: mood_trackers
-    password: <%= ENV["MOOD_TRACKERS_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: mood_trackers_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: mood_trackers_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: mood_trackers_production_cable
-    migrations_paths: db/cable_migrate
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>

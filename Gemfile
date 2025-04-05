@@ -44,6 +44,12 @@ gem "thruster", require: false
 gem "administrate", "1.0.0.beta3"
 gem "devise"
 
+# CORS
+gem "rack-cors"
+
+# JSON serializer for API
+gem "jsonapi-serializer"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -64,12 +70,6 @@ group :development, :test do
   gem "annotaterb"
 
   gem "byebug"
-
-  # JSON serializer for API
-  gem "jsonapi-serializer"
-
-  # Allow frontend requests
-  gem "rack-cors"
 end
 
 group :development do
