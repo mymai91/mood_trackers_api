@@ -5,7 +5,6 @@
 #  id         :bigint           not null, primary key
 #  comment    :text(65535)
 #  emotion    :string           default("pretty_good"), not null
-#  ip_address :string(255)
 #  rating     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -25,7 +24,6 @@ RSpec.describe Mood, type: :model do
   let (:user_ip) { create(:user_ip) }
   let (:mood) { create(:mood, user_ip: user_ip) }
   let(:invalid_mood) { build(:mood, emotion: nil) }
-  let(:invalid_ip_address) { build(:mood, ip_address: "invalid_ip") }
 
   describe "validations" do
     it "is valid with valid attributes" do
