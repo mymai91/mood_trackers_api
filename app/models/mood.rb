@@ -44,4 +44,10 @@ class Mood < ApplicationRecord
   #     errors.add(:base, "You can only submit one mood per day.")
   #   end
   # end
+  #
+  def self.is_submitted_today?(user_ip)
+    mood = user_ip.moods.last
+
+    mood.present? && mood.created_at < Time.current.beginning_of_day
+  end
 end

@@ -1,14 +1,21 @@
 class Api::V1::MoodsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    user_ip = request.remote_ip
-    user_ip = UserIp.find_or_create_by(ip_address: user_ip)
-    mood = user_ip.moods.new(mood_params)
+    ip_address = request.remote_ip
+    user_ip = UserIp.find_or_create_by(ip_address: ip_address)
 
-    if mood.save
-      render json: MoodSerializer.new(mood).serializable_hash, status: :created
+    can_submit_today =  Mood.is_submitted_today?(user_ip)
+
+    if can_submit_today
+      mood = user_ip.moods.new(mood_params)
+
+      if mood.save
+        render json: MoodSerializer.new(mood).serializable_hash, status: :created
+      else
+        render json: { errors: mood.errors.full_messages }, status: :unprocessable_entity
+      end
     else
-      render json: { errors: mood.errors.full_messages }, status: :unprocessable_entity
+      render json: { message: "You can only submit one mood per day." }, status: :unprocessable_entity
     end
   end
 
