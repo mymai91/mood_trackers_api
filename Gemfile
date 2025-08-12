@@ -63,7 +63,7 @@ group :development, :test do
   gem "dotenv-rails"
 
   # Unit test
-  gem "rspec-rails", "~> 7.0.0"
+  gem "rspec-rails", "~> 8.0.2"
   gem "factory_bot_rails"
 
   # Add annotation to model
